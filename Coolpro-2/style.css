@@ -1,0 +1,50 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes spiner{
+
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+    
+}
+button{
+    width: 20%;
+    height: 9%;
+    border-radius: 50px;
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(37, 36, 36);
+    color: rgb(255, 255, 255);
+    position: relative;
+    
+}
+button::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), blue,magenta,hotpink,blue);
+    padding: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 48px;
+    z-index: -1;
+    animation: spiner 2s cubic-bezier(0.33, 0.54, 0.92, 0.69) none infinite;
+}
